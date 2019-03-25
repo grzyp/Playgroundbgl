@@ -1,0 +1,53 @@
+﻿@using BGL.Web.Models
+@model BGL.Web.Models.SearchResultViewModel
+
+<div>
+    <hr />
+    @if (Model.User != null)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Username)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User.Username)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Location)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.User.Location)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.User.Avatar)
+            </dt>
+            <dd>
+                <img src="@Url.Content(Model.User.Avatar)" alt="tbd" />
+            </dd>
+
+        </dl>
+    }
+
+    @if (Model.Repositories != null)
+    {
+        <dl class="dl-horizontal">
+            @foreach (RepositoryViewModel repoVM in Model.Repositories)
+            {
+                <li class="list-group-item">
+                <dt>
+                    Repository name
+                </dt>
+                <dd>
+                    @repoVM.Name
+                </dd>
+                <dt>
+                    Stargazers count
+                </dt>
+                <dd>
+                    @repoVM.StargazersCount
+                </dd>
+                </li>
+            }
+        </dl>
+    }
+</div>
